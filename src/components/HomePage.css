@@ -1,0 +1,16 @@
+.Homepage{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.encrypted{
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    position: absolute;
+    bottom: 10px;
+    /* left: 50%; */
+    /* right: 50%; */
+}
