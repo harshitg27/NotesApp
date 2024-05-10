@@ -22,20 +22,32 @@ function App() {
   })
   // const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 600px)' })
+  const styles = {
+    disabled: {
+      opacity: '0.4'
+    },
+    enabled: {
+      cursor: 'default',
+      opacity: '1'
+    }
+  }; 
+
   return (
-    < >
+    <div >
       <div>
-        {isDesktopOrLaptop && <div className="App">
+        {isDesktopOrLaptop && <div className="App" style={show ? styles.disabled : styles.enabled} 
+        onClick={()=> setShow(false)} >
           <SideBar show={show} setShow={setShow} />
           <MainPage />
         </div>}
-        {isTabletOrMobile && <div className="App">
+        {isTabletOrMobile && <div className="App" style={show ? styles.disabled : styles.enabled} 
+        onClick={()=> setShow(false)} >
           {idx < 0 ? <SideBar show={show} setShow={setShow} /> : <Notes index={idx} />}
           
         </div>}
-        <AddNewGroupCard show={show} setShow={setShow} />
+        {show && <AddNewGroupCard setShow={setShow} />}
       </div>
-    </>
+    </div>
   );
 }
 

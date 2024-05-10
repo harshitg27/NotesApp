@@ -1,0 +1,35 @@
+
+.input-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+.input-field h2 {
+    width: 42%;
+}
+
+.input-field input {
+    width: 100%;
+    border-radius: 10px;
+    border: solid black 2px;
+    padding: 10px 20px;
+}
+
+.colorPallet {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.createButton {
+    width: 150px;
+    height: 50px;
+    background-color: #001F8B;
+    position: sticky;
+    top: 100%;
+    left: 100%;
+    border-radius: 11px;
+    font-size: 20px;
+    color: white;
+}

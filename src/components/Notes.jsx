@@ -9,6 +9,8 @@ import addNotes from '../assets/add-notes.png'
 import './Notes.css'
 import backSign from '../assets/back-button.png'
 
+const grp = JSON.parse(localStorage.getItem('groupNames'))
+
 function Notes({ index }) {
   // const idx = useSelector(store => store.index)
   // console.log(idx)
@@ -22,7 +24,7 @@ function Notes({ index }) {
       opacity: '1'
     }
   }; 
-
+  
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 600px)' })
   const groups = JSON.parse(localStorage.getItem('groupNames'))
   let name = groups[index].gName.trim();
@@ -30,13 +32,10 @@ function Notes({ index }) {
   const [note , setNote] = useState('')
   const dispatch = useDispatch()
   const [notesArr , setNotesArr] = useState(groups[index].gNotes)
-  // console.log(localStorage.groupNames)
+  // console.log('main')
   useEffect(()=>{
-    setNotesArr(groups[index].gNotes)
-    // console.log(notesArr)
-    // const groups = JSON.parse(localStorage.getItem('groupNames'))
-    // const [notesArr , setNotesArr] = useState(groups[index].gNotes)
-  },[index , groups])
+    setNotesArr(grp[index].gNotes)
+  },[index])
 
   const setIndex = (ind) =>{
     return{

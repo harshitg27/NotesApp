@@ -21,7 +21,10 @@ function SideBar({show , setShow}) {
       <h1 style={{height:'8%'}} onClick={()=>{
         return dispatch(setIndex(-1))
       }} >Pocket Notes</h1>
-      <button className='addGroup' onClick={()=> setShow(!show)}>+</button>
+      <button className='addGroup' onClick={(eve)=> {
+        eve.stopPropagation()
+        setShow(true)
+      }}>+</button>
       <div className='grpNames'>
         {groups.map((group , idx) => {
         return <GroupsDisplay name={group.gName} color={group.gColor} index = {idx} key={idx}/> })}

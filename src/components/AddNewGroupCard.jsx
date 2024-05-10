@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
+import './AddGroupCard.css'
 
-function AddNewGroupCard({show , setShow}) {
+function AddNewGroupCard({ setShow }) {
     const colors = ['#B38BFA', '#FF79F2', '#43E6FC', '#F19576', '#0047FF', '#6691FF'];
-    const [groups, SetGroups] = useState({ gName: '', gColor: '' ,  gNotes: []})
-    const handleSubmit = ()=> {
-        
-        let arrayGrp = [] ;
-        if(groups.gName.trim().length === 0){
+    const [groups, SetGroups] = useState({ gName: '', gColor: '', gNotes: [] })
+    const [colorIdx, setColorIdx] = useState(10)
+    const styles = {
+        active: {
+            border: 'solid black 2px'
+        },
+        deactive: {
+        }
+    };
+    // {idx === colorIdx ? styles.active : styles.deactive} ,
+
+    const handleSubmit = () => {
+        let arrayGrp = [];
+        if (groups.gName.trim().length === 0) {
             console.log('Enter Correct Name')
             SetGroups((prevState) => ({
                 ...prevState,
@@ -14,27 +24,29 @@ function AddNewGroupCard({show , setShow}) {
             }))
             return
         }
-        if(groups.gColor === ''){
+        if (groups.gColor === '') {
             console.log('Enter Color')
             return
         }
-        if(!localStorage.groupNames){
+        if (!localStorage.groupNames) {
             arrayGrp[0] = groups
-        }else{ 
+        } else {
             arrayGrp = JSON.parse(localStorage.getItem('groupNames'))
             arrayGrp.push(groups)
         }
         let strGrp = JSON.stringify(arrayGrp)
         localStorage.setItem('groupNames', strGrp)
-        SetGroups({ gName: '', gColor: '' ,  gNotes: []})
+        SetGroups({ gName: '', gColor: '', gNotes: [] })
         setShow(false)
     }
     return (
 
-        <div>
-            {show && <div className='newGroup'>
+        <div >
+            <div className='newGroup' onClick={(eve) => {
+                eve.stopPropagation()
+            }}>
                 <h2>Create New Group</h2>
-                <div style={{ display: 'flex' }}>
+                <div className='input-field' >
                     <h2>Group Name :  </h2>
                     <input type="text" placeholder='Enter Group Name' value={groups.gName} onInput={(e) => SetGroups((prevState) => ({
                         ...prevState,
@@ -42,19 +54,22 @@ function AddNewGroupCard({show , setShow}) {
 
                     }))} />
                 </div>
-                <div style={{ display: 'flex' }}>
+                <div className='input-field'>
                     <h2>Choose Colour :  </h2>
-                    <div style={{ width: '60%', display: 'flex', justifyContent: 'space-evenly' }}>
-                        {colors.map((colour, idx) => <div key={idx} className='colorPallet' style={{ backgroundColor: colour }}
-                            onClick={(e) => SetGroups((prevState) => ({
-                                ...prevState,
-                                gColor: colour
-
-                            }))}></div>)}
+                    <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+                        {colors.map((colour, idx) =>
+                            <div key={idx} className='colorPallet' style={{ backgroundColor: colour , border : idx == colorIdx ? 'solid black 2px' : ''}}
+                                onClick={(e) => {
+                                    setColorIdx(idx)
+                                    SetGroups((prevState) => ({
+                                        ...prevState,
+                                        gColor: colour
+                                    }))
+                                }}></div>)}
                     </div>
                 </div>
-                <button className='createButton' onClick = {() => handleSubmit()} >Create</button>
-            </div>}
+                <button className='createButton' onClick={() => handleSubmit()} >Create</button>
+            </div>
         </div>
     )
 }

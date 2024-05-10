@@ -8,45 +8,50 @@
 
 /*  */
 
+.card-shown{
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+}
+/* .card-shown :not(.newGroup){
+  opacity: 0.1;
+} */
+
 .newGroup{
-  width: 45%;
-  height: 45%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* margin-top: -375px;
-  margin-left: -160px; */
+  width: 40vw;
+  aspect-ratio: 10/6;
+  min-height: 300px;
+  min-width: 500px;
+  position: absolute;
+  top: 25vh;
+  left: 30vw;
   border-radius: 10px;
-  padding: 25px;
-  transform: translate(-50%, -50%);
+  padding: 15px;
+  padding-left: 25px;
+  opacity: 1;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  
 }
 
-.colorPallet{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+@media screen and (max-width : 1000px) {
+  .newGroup{
+      left: 15%;
+      padding: 10px;
+  }
 }
-
-.createButton{
-  width: 150px;
-  height: 50px;
-  background-color: #001F8B;
-  position: sticky;
-  top: 100%;
-  left: 100%;
-  border-radius: 11px;
-  font-size: 20px;
-  color: white;
-}
-
-@media screen and (max-width : 576px) {
-  .App{
-    flex-direction: column;
+@media screen and (max-width : 600px) {
+  .newGroup{
+      left: 5%;
+      min-width: 90vw;
+      padding: 15px;
   }
   
 }
+
