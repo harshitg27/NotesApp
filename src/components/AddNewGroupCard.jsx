@@ -5,14 +5,6 @@ function AddNewGroupCard({ setShow }) {
     const colors = ['#B38BFA', '#FF79F2', '#43E6FC', '#F19576', '#0047FF', '#6691FF'];
     const [groups, SetGroups] = useState({ gName: '', gColor: '', gNotes: [] })
     const [colorIdx, setColorIdx] = useState(10)
-    const styles = {
-        active: {
-            border: 'solid black 2px'
-        },
-        deactive: {
-        }
-    };
-    // {idx === colorIdx ? styles.active : styles.deactive} ,
 
     const handleSubmit = () => {
         let arrayGrp = [];
@@ -45,7 +37,7 @@ function AddNewGroupCard({ setShow }) {
             <div className='newGroup' onClick={(eve) => {
                 eve.stopPropagation()
             }}>
-                <h2>Create New Group</h2>
+                <h1>Create New Group</h1>
                 <div className='input-field' >
                     <h2>Group Name :  </h2>
                     <input type="text" placeholder='Enter Group Name' value={groups.gName} onInput={(e) => SetGroups((prevState) => ({
@@ -58,7 +50,7 @@ function AddNewGroupCard({ setShow }) {
                     <h2>Choose Colour :  </h2>
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                         {colors.map((colour, idx) =>
-                            <div key={idx} className='colorPallet' style={{ backgroundColor: colour , border : idx == colorIdx ? 'solid black 2px' : ''}}
+                            <div key={idx} className='colorPallet' style={{ backgroundColor: colour , border : idx === colorIdx ? 'solid black 2px' : ''}}
                                 onClick={(e) => {
                                     setColorIdx(idx)
                                     SetGroups((prevState) => ({

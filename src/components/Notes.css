@@ -4,6 +4,9 @@
     background-color:hsla(216, 57%, 91%, 1);
     text-align: justify;
 }
+.Notes h2{
+    font-size: 24px;
+}
 @media screen and (max-width : 600px) {
     .Notes{
         width: 100vw;
@@ -28,7 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 /* central part */
@@ -43,8 +46,21 @@
     padding-bottom: 15px;
     overflow-y: scroll;
 }
+
 .notes-display::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
+    width: 10px;
+}
+
+.notes-display::-webkit-scrollbar-track {
+    background-color: #000000A1;
+    border-radius: 5.5px;
+}
+
+.notes-display::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+    width: 8px;
+    border-radius: 4px;
 }
 
 .NotesCard{
@@ -53,6 +69,9 @@
     width: 100%;
     border-radius: 5px;
     box-shadow: 5px 10px 10px #ccc;
+}
+.NotesCard p{
+    font-weight: 400;
 }
 
 .NotesCard div{
@@ -83,6 +102,8 @@
     border-radius: 10px;
     padding: 10px;
     resize: none;
+    font-size: 30px;
+    font-weight: 400;
 }
 
 footer button{

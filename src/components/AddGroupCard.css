@@ -5,8 +5,12 @@
     gap: 10px;
     width: 100%;
 }
+.newGroup h1{
+    font-size: 30px;
+}
 .input-field h2 {
-    width: 42%;
+    width: 44%;
+    font-size: 27px;
 }
 
 .input-field input {
@@ -14,6 +18,8 @@
     border-radius: 10px;
     border: solid black 2px;
     padding: 10px 20px;
+    font-size: 23px;
+    font-weight: 400;
 }
 
 .colorPallet {
@@ -32,4 +38,5 @@
     border-radius: 11px;
     font-size: 20px;
     color: white;
+    font-weight: 400;
 }

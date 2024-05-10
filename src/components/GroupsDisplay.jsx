@@ -6,7 +6,7 @@ function GroupsDisplay({ name, color, index }) {
   const heading = name.slice(0, 2).toUpperCase()
   const dispatch = useDispatch()
   // const [clsName , setClsName] = useState('')
-  const clsName = ''
+  // const clsName = ''
 
   const setIndex = (ind) => {
     return {
@@ -14,22 +14,10 @@ function GroupsDisplay({ name, color, index }) {
       payload: ind
     }
   }
-//   useEffect(()=>  {
-//     setClsName('')
-//     console.log(clsName)
-//   } , [index])
-
-//   useEffect(() => {
-//     return () => {
-//       console.log('page Unmount' , index)
-//         // Anything in here is fired on component unmount.
-//     }
-// }, [])
 
   return (
-    <div className= {`group-display ${clsName}` }
+    <div className= {`group-display ` }
       onClick={() => {
-        // setClsName('active-group')
         return dispatch(setIndex(index))
       }} >
       <div className='groupNameHeading' style={{ backgroundColor: color }}>{heading}</div>
